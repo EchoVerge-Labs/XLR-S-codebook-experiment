@@ -1,0 +1,783 @@
+{
+ "model": "facebook/wav2vec2-xls-r-300m",
+ "advertised_language_count": 128,
+ "parsed_language_count": 128,
+ "total_hours_parsed": 436154,
+ "sources": {
+  "paper": "https://arxiv.org/abs/2111.09296",
+  "table": "Table 1",
+  "fairseq": "https://github.com/facebookresearch/fairseq/blob/main/examples/wav2vec/README.md"
+ },
+ "languages": [
+  {
+   "name": "Abkhazian",
+   "iso": "ab",
+   "pretrain_hours": 0.5
+  },
+  {
+   "name": "Afrikaans",
+   "iso": "af",
+   "pretrain_hours": 87.0
+  },
+  {
+   "name": "Albanian",
+   "iso": "sq",
+   "pretrain_hours": 56.0
+  },
+  {
+   "name": "Amharic",
+   "iso": "am",
+   "pretrain_hours": 65.0
+  },
+  {
+   "name": "Arabic",
+   "iso": "ar",
+   "pretrain_hours": 95.0
+  },
+  {
+   "name": "Armenian",
+   "iso": "hy",
+   "pretrain_hours": 55.0
+  },
+  {
+   "name": "Assamese",
+   "iso": "as",
+   "pretrain_hours": 179.0
+  },
+  {
+   "name": "Azerbaijani",
+   "iso": "az",
+   "pretrain_hours": 47.0
+  },
+  {
+   "name": "Bashkir",
+   "iso": "ba",
+   "pretrain_hours": 47.0
+  },
+  {
+   "name": "Basque",
+   "iso": "eu",
+   "pretrain_hours": 113.0
+  },
+  {
+   "name": "Belarusian",
+   "iso": "be",
+   "pretrain_hours": 106.0
+  },
+  {
+   "name": "Bengali",
+   "iso": "bn",
+   "pretrain_hours": 100.0
+  },
+  {
+   "name": "Bosnian",
+   "iso": "bs",
+   "pretrain_hours": 83.0
+  },
+  {
+   "name": "Breton",
+   "iso": "br",
+   "pretrain_hours": 42.0
+  },
+  {
+   "name": "Bulgarian",
+   "iso": "bg",
+   "pretrain_hours": 17616.0
+  },
+  {
+   "name": "Burmese",
+   "iso": "my",
+   "pretrain_hours": 33.0
+  },
+  {
+   "name": "Cantonese",
+   "iso": "yue",
+   "pretrain_hours": 130.0
+  },
+  {
+   "name": "Catalan",
+   "iso": "ca",
+   "pretrain_hours": 691.0
+  },
+  {
+   "name": "Cebuano",
+   "iso": "ceb",
+   "pretrain_hours": 42.0
+  },
+  {
+   "name": "Central Khmer",
+   "iso": "km",
+   "pretrain_hours": 33.0
+  },
+  {
+   "name": "Chinese CN",
+   "iso": "zh",
+   "pretrain_hours": 90.0
+  },
+  {
+   "name": "Chinese HK",
+   "iso": "zh-HK",
+   "pretrain_hours": 51.0
+  },
+  {
+   "name": "Chinese TW",
+   "iso": "zh-TW",
+   "pretrain_hours": 53.0
+  },
+  {
+   "name": "Chuvash",
+   "iso": "cv",
+   "pretrain_hours": 4.0
+  },
+  {
+   "name": "Croatian",
+   "iso": "hr",
+   "pretrain_hours": 2520.0
+  },
+  {
+   "name": "Czech",
+   "iso": "cs",
+   "pretrain_hours": 18514.0
+  },
+  {
+   "name": "Danish",
+   "iso": "da",
+   "pretrain_hours": 13588.0
+  },
+  {
+   "name": "Divehi",
+   "iso": "dv",
+   "pretrain_hours": 18.0
+  },
+  {
+   "name": "Dutch",
+   "iso": "nl",
+   "pretrain_hours": 20070.0
+  },
+  {
+   "name": "English",
+   "iso": "en",
+   "pretrain_hours": 69493.0
+  },
+  {
+   "name": "Esperanto",
+   "iso": "eo",
+   "pretrain_hours": 97.0
+  },
+  {
+   "name": "Estonian",
+   "iso": "et",
+   "pretrain_hours": 10652.0
+  },
+  {
+   "name": "Faroese",
+   "iso": "fo",
+   "pretrain_hours": 54.0
+  },
+  {
+   "name": "Finnish",
+   "iso": "fi",
+   "pretrain_hours": 13981.0
+  },
+  {
+   "name": "French",
+   "iso": "fr",
+   "pretrain_hours": 23973.0
+  },
+  {
+   "name": "Galician",
+   "iso": "gl",
+   "pretrain_hours": 57.0
+  },
+  {
+   "name": "Ganda",
+   "iso": "lg",
+   "pretrain_hours": 3.0
+  },
+  {
+   "name": "Georgian",
+   "iso": "ka",
+   "pretrain_hours": 127.0
+  },
+  {
+   "name": "German",
+   "iso": "de",
+   "pretrain_hours": 25378.0
+  },
+  {
+   "name": "Greek",
+   "iso": "el",
+   "pretrain_hours": 17761.0
+  },
+  {
+   "name": "Guarani",
+   "iso": "gn",
+   "pretrain_hours": 2.0
+  },
+  {
+   "name": "Gujarati",
+   "iso": "gu",
+   "pretrain_hours": 37.0
+  },
+  {
+   "name": "Haitian",
+   "iso": "ht",
+   "pretrain_hours": 138.0
+  },
+  {
+   "name": "Hakha Chin",
+   "iso": "cnh",
+   "pretrain_hours": 2.0
+  },
+  {
+   "name": "Hausa",
+   "iso": "ha",
+   "pretrain_hours": 75.0
+  },
+  {
+   "name": "Hawaiian",
+   "iso": "haw",
+   "pretrain_hours": 10.0
+  },
+  {
+   "name": "Hebrew",
+   "iso": "he",
+   "pretrain_hours": 77.0
+  },
+  {
+   "name": "Hindi",
+   "iso": "hi",
+   "pretrain_hours": 65.0
+  },
+  {
+   "name": "Hungarian",
+   "iso": "hu",
+   "pretrain_hours": 17421.0
+  },
+  {
+   "name": "Icelandic",
+   "iso": "is",
+   "pretrain_hours": 73.0
+  },
+  {
+   "name": "Indonesian",
+   "iso": "id",
+   "pretrain_hours": 41.0
+  },
+  {
+   "name": "Interlingua",
+   "iso": "ia",
+   "pretrain_hours": 9.0
+  },
+  {
+   "name": "Irish",
+   "iso": "ga",
+   "pretrain_hours": 3.0
+  },
+  {
+   "name": "Italian",
+   "iso": "it",
+   "pretrain_hours": 21943.0
+  },
+  {
+   "name": "Japanese",
+   "iso": "ja",
+   "pretrain_hours": 49.0
+  },
+  {
+   "name": "Javanese",
+   "iso": "jv",
+   "pretrain_hours": 42.0
+  },
+  {
+   "name": "Kabyle",
+   "iso": "kab",
+   "pretrain_hours": 520.0
+  },
+  {
+   "name": "Kannada",
+   "iso": "kn",
+   "pretrain_hours": 36.0
+  },
+  {
+   "name": "Kazakh",
+   "iso": "kk",
+   "pretrain_hours": 98.0
+  },
+  {
+   "name": "Kinyarwanda",
+   "iso": "rw",
+   "pretrain_hours": 1199.0
+  },
+  {
+   "name": "Kyrgyz",
+   "iso": "ky",
+   "pretrain_hours": 11.0
+  },
+  {
+   "name": "Korean",
+   "iso": "ko",
+   "pretrain_hours": 61.0
+  },
+  {
+   "name": "Kurmanji",
+   "iso": "ku",
+   "pretrain_hours": 38.0
+  },
+  {
+   "name": "Lao",
+   "iso": "lo",
+   "pretrain_hours": 93.0
+  },
+  {
+   "name": "Latin",
+   "iso": "la",
+   "pretrain_hours": 53.0
+  },
+  {
+   "name": "Latvian",
+   "iso": "lv",
+   "pretrain_hours": 13126.0
+  },
+  {
+   "name": "Lingala",
+   "iso": "ln",
+   "pretrain_hours": 72.0
+  },
+  {
+   "name": "Lithuanian",
+   "iso": "lt",
+   "pretrain_hours": 14423.0
+  },
+  {
+   "name": "Luxembourgish",
+   "iso": "lb",
+   "pretrain_hours": 60.0
+  },
+  {
+   "name": "Macedonian",
+   "iso": "mk",
+   "pretrain_hours": 89.0
+  },
+  {
+   "name": "Malagasy",
+   "iso": "mg",
+   "pretrain_hours": 87.0
+  },
+  {
+   "name": "Malay",
+   "iso": "ms",
+   "pretrain_hours": 66.0
+  },
+  {
+   "name": "Malayalam",
+   "iso": "ml",
+   "pretrain_hours": 38.0
+  },
+  {
+   "name": "Maltese",
+   "iso": "mt",
+   "pretrain_hours": 9120.0
+  },
+  {
+   "name": "Manx",
+   "iso": "gv",
+   "pretrain_hours": 3.0
+  },
+  {
+   "name": "Maori",
+   "iso": "mi",
+   "pretrain_hours": 27.0
+  },
+  {
+   "name": "Marathi",
+   "iso": "mr",
+   "pretrain_hours": 68.0
+  },
+  {
+   "name": "Mongolian",
+   "iso": "mn",
+   "pretrain_hours": 68.0
+  },
+  {
+   "name": "Nepali",
+   "iso": "ne",
+   "pretrain_hours": 58.0
+  },
+  {
+   "name": "Norwegian",
+   "iso": "no",
+   "pretrain_hours": 85.0
+  },
+  {
+   "name": "Nynorsk",
+   "iso": "nn",
+   "pretrain_hours": 45.0
+  },
+  {
+   "name": "Occitan",
+   "iso": "oc",
+   "pretrain_hours": 12.0
+  },
+  {
+   "name": "Oriya",
+   "iso": "or",
+   "pretrain_hours": 1.0
+  },
+  {
+   "name": "Pashto",
+   "iso": "ps",
+   "pretrain_hours": 109.0
+  },
+  {
+   "name": "Persian",
+   "iso": "fa",
+   "pretrain_hours": 321.0
+  },
+  {
+   "name": "Polish",
+   "iso": "pl",
+   "pretrain_hours": 20912.0
+  },
+  {
+   "name": "Portuguese",
+   "iso": "pt",
+   "pretrain_hours": 17797.0
+  },
+  {
+   "name": "Punjabi",
+   "iso": "pa",
+   "pretrain_hours": 43.0
+  },
+  {
+   "name": "Romanian",
+   "iso": "ro",
+   "pretrain_hours": 17515.0
+  },
+  {
+   "name": "Romansh Sursilvan",
+   "iso": "rm-sursilv",
+   "pretrain_hours": 6.0
+  },
+  {
+   "name": "Romansh Vallader",
+   "iso": "rm-vallader",
+   "pretrain_hours": 2.0
+  },
+  {
+   "name": "Russian",
+   "iso": "ru",
+   "pretrain_hours": 166.0
+  },
+  {
+   "name": "Sakha",
+   "iso": "sah",
+   "pretrain_hours": 4.0
+  },
+  {
+   "name": "Sanskrit",
+   "iso": "sa",
+   "pretrain_hours": 12.0
+  },
+  {
+   "name": "Scots",
+   "iso": "sco",
+   "pretrain_hours": 2.0
+  },
+  {
+   "name": "Serbian",
+   "iso": "sr",
+   "pretrain_hours": 40.0
+  },
+  {
+   "name": "Shona",
+   "iso": "sn",
+   "pretrain_hours": 24.0
+  },
+  {
+   "name": "Sindhi",
+   "iso": "sd",
+   "pretrain_hours": 67.0
+  },
+  {
+   "name": "Sinhala",
+   "iso": "si",
+   "pretrain_hours": 54.0
+  },
+  {
+   "name": "Slovakian",
+   "iso": "sk",
+   "pretrain_hours": 11925.0
+  },
+  {
+   "name": "Slovenian",
+   "iso": "sl",
+   "pretrain_hours": 11210.0
+  },
+  {
+   "name": "Somali",
+   "iso": "so",
+   "pretrain_hours": 82.0
+  },
+  {
+   "name": "Sorbian Upper",
+   "iso": "hsb",
+   "pretrain_hours": 2.0
+  },
+  {
+   "name": "Spanish",
+   "iso": "es",
+   "pretrain_hours": 22258.0
+  },
+  {
+   "name": "Sundanese",
+   "iso": "su",
+   "pretrain_hours": 51.0
+  },
+  {
+   "name": "Swahili",
+   "iso": "sw",
+   "pretrain_hours": 91.0
+  },
+  {
+   "name": "Swedish",
+   "iso": "sv",
+   "pretrain_hours": 16325.0
+  },
+  {
+   "name": "Tagalog",
+   "iso": "tl",
+   "pretrain_hours": 150.0
+  },
+  {
+   "name": "Tajik",
+   "iso": "tg",
+   "pretrain_hours": 51.0
+  },
+  {
+   "name": "Tamil",
+   "iso": "ta",
+   "pretrain_hours": 118.0
+  },
+  {
+   "name": "Tatar",
+   "iso": "tt",
+   "pretrain_hours": 107.0
+  },
+  {
+   "name": "Telugu",
+   "iso": "te",
+   "pretrain_hours": 62.0
+  },
+  {
+   "name": "Thai",
+   "iso": "th",
+   "pretrain_hours": 57.0
+  },
+  {
+   "name": "Tibetan",
+   "iso": "bo",
+   "pretrain_hours": 81.0
+  },
+  {
+   "name": "Tok",
+   "iso": "tpi",
+   "pretrain_hours": 36.0
+  },
+  {
+   "name": "Turkish",
+   "iso": "tr",
+   "pretrain_hours": 136.0
+  },
+  {
+   "name": "Turkmen",
+   "iso": "tk",
+   "pretrain_hours": 68.0
+  },
+  {
+   "name": "Ukrainian",
+   "iso": "uk",
+   "pretrain_hours": 72.0
+  },
+  {
+   "name": "Urdu",
+   "iso": "ur",
+   "pretrain_hours": 34.0
+  },
+  {
+   "name": "Uzbek",
+   "iso": "uz",
+   "pretrain_hours": 36.0
+  },
+  {
+   "name": "Vietnamese",
+   "iso": "vi",
+   "pretrain_hours": 131.0
+  },
+  {
+   "name": "Votic",
+   "iso": "vot",
+   "pretrain_hours": 0.5
+  },
+  {
+   "name": "Waray",
+   "iso": "war",
+   "pretrain_hours": 9.0
+  },
+  {
+   "name": "Welsh",
+   "iso": "cy",
+   "pretrain_hours": 156.0
+  },
+  {
+   "name": "Western Frisian",
+   "iso": "fy",
+   "pretrain_hours": 15.0
+  },
+  {
+   "name": "Yiddish",
+   "iso": "yi",
+   "pretrain_hours": 37.0
+  },
+  {
+   "name": "Yoruba",
+   "iso": "yo",
+   "pretrain_hours": 75.0
+  },
+  {
+   "name": "Zulu",
+   "iso": "zu",
+   "pretrain_hours": 56.0
+  }
+ ],
+ "iso_codes": [
+  "ab",
+  "af",
+  "am",
+  "ar",
+  "as",
+  "az",
+  "ba",
+  "be",
+  "bg",
+  "bn",
+  "bo",
+  "br",
+  "bs",
+  "ca",
+  "ceb",
+  "cnh",
+  "cs",
+  "cv",
+  "cy",
+  "da",
+  "de",
+  "dv",
+  "el",
+  "en",
+  "eo",
+  "es",
+  "et",
+  "eu",
+  "fa",
+  "fi",
+  "fo",
+  "fr",
+  "fy",
+  "ga",
+  "gl",
+  "gn",
+  "gu",
+  "gv",
+  "ha",
+  "haw",
+  "he",
+  "hi",
+  "hr",
+  "hsb",
+  "ht",
+  "hu",
+  "hy",
+  "ia",
+  "id",
+  "is",
+  "it",
+  "ja",
+  "jv",
+  "ka",
+  "kab",
+  "kk",
+  "km",
+  "kn",
+  "ko",
+  "ku",
+  "ky",
+  "la",
+  "lb",
+  "lg",
+  "ln",
+  "lo",
+  "lt",
+  "lv",
+  "mg",
+  "mi",
+  "mk",
+  "ml",
+  "mn",
+  "mr",
+  "ms",
+  "mt",
+  "my",
+  "ne",
+  "nl",
+  "nn",
+  "no",
+  "oc",
+  "or",
+  "pa",
+  "pl",
+  "ps",
+  "pt",
+  "rm-sursilv",
+  "rm-vallader",
+  "ro",
+  "ru",
+  "rw",
+  "sa",
+  "sah",
+  "sco",
+  "sd",
+  "si",
+  "sk",
+  "sl",
+  "sn",
+  "so",
+  "sq",
+  "sr",
+  "su",
+  "sv",
+  "sw",
+  "ta",
+  "te",
+  "tg",
+  "th",
+  "tk",
+  "tl",
+  "tpi",
+  "tr",
+  "tt",
+  "uk",
+  "ur",
+  "uz",
+  "vi",
+  "vot",
+  "war",
+  "yi",
+  "yo",
+  "yue",
+  "zh",
+  "zh-HK",
+  "zh-TW",
+  "zu"
+ ]
+}
