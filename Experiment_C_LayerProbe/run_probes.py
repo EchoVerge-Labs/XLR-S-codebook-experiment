@@ -11,8 +11,10 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import probes as P
 from config import (LANGUAGES, N_LAYERS, SEEDS, SCALING_HOURS, CTC_PROBE,
-                    SPEAKER_PROBE, WEIGHTED_SUM_PROBE, CHECKPOINT_PRIMARY,
-                    CTC_MAX_RESTARTS, CTC_DIVERGENCE_OUTLIER_FACTOR)
+                    SPEAKER_PROBE, WEIGHTED_SUM_PROBE, WEIGHTED_SPEAKER_PROBE,
+                    CHECKPOINT_PRIMARY,
+                    CTC_MAX_DRAWS, CTC_DIVERGENCE_OUTLIER_FACTOR,
+                    CTC_PROBE_EXTRA_DRAWS)
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -32,33 +34,52 @@ def run_config(tag):
 
 
 def ctc_cell(ctr, cte, sp, layer, seeds, hp=CTC_PROBE, max_hours=None):
-    """Run one (language, layer) cell across seeds, restarting collapsed runs.
+    """Run one (language, layer) cell, drawing fresh inits until enough runs are healthy.
 
-    A minority of initialisations collapse into a degenerate CTC solution. They are
-    identified WITHIN the cell from training loss only - a collapsed run's final/first
-    loss ratio is several times that of its healthy siblings on identical data - and are
-    re-run with a fresh init. No test information is used to decide. Restart counts are
-    recorded so the rate is visible in the results."""
-    runs, restarts = [], 0
-    for s in seeds:
+    A minority of initialisations collapse into a degenerate CTC solution. Collapsed runs
+    are identified from TRAINING loss only (no test information): within a cell their
+    final/first loss ratio is an order of magnitude worse than a healthy sibling's on
+    identical data - Tamil L17 at 0.5 h gave 0.010-0.014 healthy against 0.207-0.288
+    collapsed, with 4 of 9 inits surviving.
+
+    The rule is relative rather than absolute because no global threshold separates the
+    two: English's early layers are genuinely hard and sit at ratios of 0.15-0.36 with
+    every seed agreeing, which an absolute cutoff would wrongly discard.
+
+    Drawing until enough healthy runs accumulate also covers the case where EVERY initial
+    seed collapses, which a purely within-set outlier test cannot see - there is then no
+    healthy sibling to be an outlier against.
+    """
+    # Always draw a few MORE inits than are kept. Deciding after exactly `want` draws is
+    # unsafe: if every one of them collapses they are mutually consistent and look
+    # healthy relative to each other, which is precisely how the Tamil 0.5 h cell slipped
+    # through. The extra draws probe for a better mode before anything is accepted.
+    want = len(seeds)
+    minimum = want + CTC_PROBE_EXTRA_DRAWS
+    runs, drawn = [], 0
+    while drawn < CTC_MAX_DRAWS:
+        s = seeds[drawn] if drawn < len(seeds) else seeds[0] + 7919 * drawn
         runs.append(P.train_ctc(ctr, cte, sp["ctc_train"], sp["ctc_test"], sp["vocab"],
                                 layer, s, hp=hp, max_hours=max_hours))
-    for _ in range(CTC_MAX_RESTARTS):
-        ratios = [x["loss_ratio"] for x in runs]
-        base = min(ratios)
-        bad = [i for i, q in enumerate(ratios)
-               if q > max(CTC_DIVERGENCE_OUTLIER_FACTOR * base, 1e-6)]
-        if not bad:
+        drawn += 1
+        if drawn < minimum:
+            continue
+        best = min(x["loss_ratio"] for x in runs)
+        healthy = [x for x in runs
+                   if x["loss_ratio"] <= CTC_DIVERGENCE_OUTLIER_FACTOR * best]
+        if len(healthy) >= want:
             break
-        for i in bad:
-            restarts += 1
-            runs[i] = P.train_ctc(ctr, cte, sp["ctc_train"], sp["ctc_test"], sp["vocab"],
-                                  layer, seeds[i] + 7919 * restarts, hp=hp,
-                                  max_hours=max_hours)
-    cer = [x["cer"] for x in runs]
+    best = min(x["loss_ratio"] for x in runs)
+    healthy = [x for x in runs if x["loss_ratio"] <= CTC_DIVERGENCE_OUTLIER_FACTOR * best]
+    healthy.sort(key=lambda x: x["loss_ratio"])
+    keep = (healthy if len(healthy) >= want else
+            sorted(runs, key=lambda x: x["loss_ratio"]))[:want]
+    cer = [x["cer"] for x in keep]
     return dict(cer_mean=float(np.mean(cer)), cer_std=float(np.std(cer)), cer_seeds=cer,
-                loss_ratios=[x["loss_ratio"] for x in runs], restarts=restarts,
-                n_train=runs[0]["n_train"], n_test=runs[0]["n_test"])
+                loss_ratios=[x["loss_ratio"] for x in keep],
+                restarts=drawn - want, draws=drawn,
+                enough_healthy=bool(len(healthy) >= want),
+                n_train=keep[0]["n_train"], n_test=keep[0]["n_test"])
 
 
 def main():
@@ -131,7 +152,8 @@ def main():
                 print(f"[{a.tag}] {lang} weighted CTC CER {cell['ctc']['cer_mean']:.4f}", flush=True)
             if "speaker" not in cell and "speaker" in a.tasks:
                 runs = [P.train_speaker(ctr, cte, sp["speaker_train"], sp["speaker_test"],
-                                        sp["speakers"], None, s, hp=SPEAKER_PROBE, weighted=True)
+                                        sp["speakers"], None, s, hp=WEIGHTED_SPEAKER_PROBE,
+                                        weighted=True)
                         for s in a.seeds]
                 cell["speaker"] = dict(acc_mean=float(np.mean([r["accuracy"] for r in runs])),
                                        acc_std=float(np.std([r["accuracy"] for r in runs])),

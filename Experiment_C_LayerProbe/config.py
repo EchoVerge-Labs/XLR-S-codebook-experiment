@@ -68,7 +68,9 @@ STANDARDISE_FEATURES = False
 # plateaus. Collapsed runs are restarted with a fresh init, up to this many times,
 # and the restart count is reported. Lowering the initial blank bias was tried
 # first and only changed WHICH seeds collapsed, so it was rejected.
-CTC_MAX_RESTARTS = 3
+CTC_MAX_DRAWS = 12        # fresh inits to draw before accepting what we have
+CTC_PROBE_EXTRA_DRAWS = 3 # always draw this many beyond the number kept, so a
+                          # cell where every initial seed collapses is detected
 # A collapsed run is identified WITHIN its (language, layer) cell: its final/first
 # training-loss ratio is several times that of its healthy siblings on identical
 # data (e.g. Sinhala L15: 0.27 collapsed vs 0.04 healthy). A global threshold does
@@ -114,6 +116,17 @@ SPEAKER_PROBE = dict(
 # pre-amendment values and was undertrained: its learned layer weights stayed at the
 # uniform initialisation (centroid 11.50 = exactly the middle of 0-23 for every language
 # and both tasks), which is not a layer-importance profile at all.
+# The weighted-sum SPEAKER probe needs its own settings. Its first run reused
+# SPEAKER_PROBE, which is fine for a single linear head but cannot learn 24 layer
+# weights: the weights stayed at the uniform initialisation (centroid 11.50 for every
+# language, weight spread 1.04x) and every score came in BELOW that language's best
+# single layer - the opposite of what a weighted sum must do.
+WEIGHTED_SPEAKER_PROBE = dict(
+    kind="softmax_weighted_sum",
+    lr=1e-2, epochs=120, batch_size=64, optimizer="adamw", weight_decay=0.01,
+    grad_clip=5.0, scheduler="linear_warmup", warmup_frac=0.1,
+)
+
 WEIGHTED_SUM_PROBE = dict(
     kind="softmax_weighted_sum",  # learnable weights over all 24 layers -> linear head
     lr=1e-2, epochs=25, batch_size=32, optimizer="adamw", weight_decay=0.01,

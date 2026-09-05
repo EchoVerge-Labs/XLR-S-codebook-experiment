@@ -11,7 +11,7 @@ import numpy as np, torch, torch.nn as nn
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import (CTC_PROBE, SPEAKER_PROBE, WEIGHTED_SUM_PROBE, N_LAYERS,
                     SPEAKER_TRAIN_UTTS_PER_SPEAKER, STANDARDISE_FEATURES,
-                    CTC_MAX_RESTARTS)
+                    )
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DEV = "cuda"

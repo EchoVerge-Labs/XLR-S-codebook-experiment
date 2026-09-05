@@ -52,9 +52,5 @@
 *.tmp
 *.output
 
-# ---------------------------------------------------------------- in-flight results
-# Experiment C's probe sweep is still running; its result files and the figures derived
-# from the discarded pre-fix run are excluded until the corrected sweep completes.
-Experiment_C_LayerProbe/results/probe_results_*.json
-Experiment_C_LayerProbe/results/analysis_*.json
-Experiment_C_LayerProbe/results/fig*.png
+# The discarded pre-fix sweep is not versioned; the corrected run is.
+Experiment_C_LayerProbe/results/probe_results_*_PRE_FIX.json
