@@ -105,6 +105,8 @@ def main():
     ap.add_argument("--tag", default="xlsr300m")
     ap.add_argument("--ckpt", default=CHECKPOINT_PRIMARY)
     ap.add_argument("--random-init", action="store_true")
+    ap.add_argument("--langs", nargs="*", default=None,
+                    help="languages to extract (default: config.LANGUAGES)")
     ap.add_argument("--max-hours", type=float, default=None,
                     help="cap per split (used to keep the floor control small)")
     a = ap.parse_args()
@@ -113,7 +115,7 @@ def main():
     print(f"extractor: {a.ckpt} random_init={a.random_init} dim={ex.dim} "
           f"layers={N_LAYERS}", flush=True)
     log = []
-    for lang in LANGUAGES:
+    for lang in (a.langs or LANGUAGES):
         sp = json.load(open(f"{ROOT}/data/{lang}_split.json", encoding="utf-8"))
         # the union of both tasks' utterances; probes index into it by utt id
         pool = {r["utt"]: r for r in sp["ctc_train"] + sp["ctc_test"]}

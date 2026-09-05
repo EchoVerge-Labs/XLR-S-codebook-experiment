@@ -15,17 +15,24 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import probes as P
 from config import LANGUAGES
+import argparse
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LAYERS = [0, 4, 8, 12, 15, 17, 20, 22]
 N_DRAWS = 9
 OUT = f"{ROOT}/results/collapse_rate.json"
 
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--langs", nargs="*", default=None)
+_ap.add_argument("--out", default=None)
+_A, _ = _ap.parse_known_args()
+if _A.out: OUT = f"{ROOT}/results/{_A.out}"
+
 
 def main():
     res = json.load(open(OUT)) if os.path.exists(OUT) else {}
     t0 = time.time()
-    for lang in LANGUAGES:
+    for lang in (_A.langs or LANGUAGES):
         sp = json.load(open(f"{ROOT}/data/{lang}_split.json", encoding="utf-8"))
         ctr = P.LayerCache("xlsr300m", lang, "train")
         cte = P.LayerCache("xlsr300m", lang, "test")
