@@ -1,0 +1,154 @@
+{
+ "bn_in": {
+  "config": "bn_in",
+  "n_available": 920,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.88,
+  "failures": []
+ },
+ "fa_ir": {
+  "config": "fa_ir",
+  "n_available": 871,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 2.113,
+  "failures": []
+ },
+ "pl_pl": {
+  "config": "pl_pl",
+  "n_available": 758,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.357,
+  "failures": []
+ },
+ "et_ee": {
+  "config": "et_ee",
+  "n_available": 893,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.678,
+  "failures": []
+ },
+ "kk_kz": {
+  "config": "kk_kz",
+  "n_available": 856,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 2.252,
+  "failures": []
+ },
+ "ta_in": {
+  "config": "ta_in",
+  "n_available": 591,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.793,
+  "failures": []
+ },
+ "id_id": {
+  "config": "id_id",
+  "n_available": 687,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.737,
+  "failures": []
+ },
+ "cmn_hans_cn": {
+  "config": "cmn_hans_cn",
+  "n_available": 945,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.644,
+  "failures": []
+ },
+ "zu_za": {
+  "config": "zu_za",
+  "n_available": 854,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 2.277,
+  "failures": []
+ },
+ "mr_in": {
+  "config": "mr_in",
+  "n_available": 1015,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.919,
+  "failures": []
+ },
+ "el_gr": {
+  "config": "el_gr",
+  "n_available": 650,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.475,
+  "failures": []
+ },
+ "cs_cz": {
+  "config": "cs_cz",
+  "n_available": 723,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.728,
+  "failures": []
+ },
+ "fi_fi": {
+  "config": "fi_fi",
+  "n_available": 918,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.806,
+  "failures": []
+ },
+ "uz_uz": {
+  "config": "uz_uz",
+  "n_available": 862,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.683,
+  "failures": []
+ },
+ "ml_in": {
+  "config": "ml_in",
+  "n_available": 958,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 2.062,
+  "failures": []
+ },
+ "jv_id": {
+  "config": "jv_id",
+  "n_available": 728,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.935,
+  "failures": []
+ },
+ "my_mm": {
+  "config": "my_mm",
+  "n_available": 880,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 2.178,
+  "failures": []
+ },
+ "xh_za": {
+  "config": "xh_za",
+  "n_available": 1041,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.809,
+  "failures": []
+ },
+ "en_us": {
+  "config": "en_us",
+  "n_available": 647,
+  "n_staged": 500,
+  "n_failed": 0,
+  "hours": 1.389,
+  "failures": []
+ }
+}

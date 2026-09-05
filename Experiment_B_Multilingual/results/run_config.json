@@ -1,0 +1,175 @@
+{
+ "experiment": "Experiment B - multilingual seen/unseen sweep",
+ "checkpoints": {
+  "xlsr53": "facebook/wav2vec2-large-xlsr-53",
+  "xlsr300m": "facebook/wav2vec2-xls-r-300m"
+ },
+ "dataset": {
+  "name": "google/fleurs",
+  "split": "test",
+  "languages": 19,
+  "clips_per_language": 500,
+  "sampling_seed": 1234,
+  "total_clips": 9500
+ },
+ "measurement": {
+  "source": "imported verbatim from Stage_A_Diagnostic",
+  "mask_prob": 0.065,
+  "mask_span": 10,
+  "n_negatives": 100,
+  "temperature": 0.1,
+  "max_seconds": 30.0,
+  "repeats_per_file": 3,
+  "mask_seed_formula": "1000*file_id + repeat_index",
+  "dtype": "bfloat16",
+  "energy_gate": "rms > 0.10 * per-file p90(rms)"
+ },
+ "arms": {
+  "full": {
+   "crop_seconds": null,
+   "role": "PRIMARY OVERALL (unmodified Stage A protocol)"
+  },
+  "crop6": {
+   "crop_seconds": 6.0,
+   "role": "PRIMARY CROPPED (matched context, low differential loss)"
+  },
+  "crop9": {
+   "crop_seconds": 9.0,
+   "role": "SENSITIVITY (pre-registered P25 rule)"
+  }
+ },
+ "crop_rule": {
+  "percentile": 25,
+  "round_to": 0.5,
+  "windows": [
+   6.0,
+   9.0
+  ],
+  "primary": 6.0,
+  "short_clips": "dropped, not padded"
+ },
+ "pairs": [
+  {
+   "seen": "bn_in",
+   "unseen": "mr_in",
+   "family": "Indo-European",
+   "description": "Bengali / Marathi      - both Indo-Aryan"
+  },
+  {
+   "seen": "pl_pl",
+   "unseen": "cs_cz",
+   "family": "Indo-European",
+   "description": "Polish / Czech         - both West Slavic"
+  },
+  {
+   "seen": "fa_ir",
+   "unseen": "el_gr",
+   "family": "Indo-European",
+   "description": "Persian / Greek        - Indo-European, different branches"
+  },
+  {
+   "seen": "et_ee",
+   "unseen": "fi_fi",
+   "family": "Uralic",
+   "description": "Estonian / Finnish     - both Finnic"
+  },
+  {
+   "seen": "kk_kz",
+   "unseen": "uz_uz",
+   "family": "Turkic",
+   "description": "Kazakh / Uzbek         - Turkic, Kipchak vs Karluk"
+  },
+  {
+   "seen": "ta_in",
+   "unseen": "ml_in",
+   "family": "Dravidian",
+   "description": "Tamil / Malayalam      - both South Dravidian"
+  },
+  {
+   "seen": "id_id",
+   "unseen": "jv_id",
+   "family": "Austronesian",
+   "description": "Indonesian / Javanese  - Malayo-Polynesian, different branches"
+  },
+  {
+   "seen": "cmn_hans_cn",
+   "unseen": "my_mm",
+   "family": "Sino-Tibetan",
+   "description": "Mandarin / Burmese     - Sinitic vs Burmish"
+  },
+  {
+   "seen": "zu_za",
+   "unseen": "xh_za",
+   "family": "Atlantic-Congo",
+   "description": "Zulu / Xhosa           - both Nguni"
+  }
+ ],
+ "proximity": {
+  "mr_in": {
+   "rating": "CLOSE",
+   "closest_seen": "Bengali (bn), Assamese (as)",
+   "rationale": "Indo-Aryan: same sub-branch (Marathi Southern, Bengali/Assamese Eastern)"
+  },
+  "cs_cz": {
+   "rating": "CLOSE",
+   "closest_seen": "Polish (pl)",
+   "rationale": "West Slavic: same sub-branch, closely related"
+  },
+  "fi_fi": {
+   "rating": "CLOSE",
+   "closest_seen": "Estonian (et)",
+   "rationale": "Finnic: same sub-branch, closely related"
+  },
+  "ml_in": {
+   "rating": "CLOSE",
+   "closest_seen": "Tamil (ta)",
+   "rationale": "South Dravidian: same sub-branch, very closely related"
+  },
+  "xh_za": {
+   "rating": "CLOSE",
+   "closest_seen": "Zulu (zu)",
+   "rationale": "Nguni: same sub-branch, largely mutually intelligible"
+  },
+  "el_gr": {
+   "rating": "DISTANT",
+   "closest_seen": "none in branch",
+   "rationale": "Hellenic: no Hellenic language in XLSR-53; Indo-European family only"
+  },
+  "uz_uz": {
+   "rating": "DISTANT",
+   "closest_seen": "Kazakh (kk), Kyrgyz (ky), Turkish (tr), Tatar (tt)",
+   "rationale": "Karluk: no Karluk in XLSR-53; Turkic family only (Kipchak/Oghuz present)"
+  },
+  "my_mm": {
+   "rating": "DISTANT",
+   "closest_seen": "Hakh-Chin (cnh)",
+   "rationale": "Burmish: nearest is Kuki-Chin (Hakh-Chin), a different Tibeto-Burman branch with ~2 h of pre-training data; Sinitic present but distant"
+  },
+  "jv_id": {
+   "rating": "DISTANT",
+   "closest_seen": "Indonesian (id), Tagalog (tl), Cebuano (ceb)",
+   "rationale": "Javanese is its own primary branch; Indonesian is Malayic, Tagalog/Cebuano are Philippine"
+  }
+ },
+ "proximity_sensitivity": {
+  "my_mm": "CLOSE"
+ },
+ "distant_subgroup_reporting": "descriptive_only",
+ "equivalence": {
+  "stage_a_control_margins": {
+   "1.45x speed/pitch": 0.289,
+   "six-way babble": 0.306,
+   "reversed speech": 0.59,
+   "sine tones": 0.987,
+   "white noise": 2.023
+  },
+  "margin_primary": 0.289,
+  "margin_secondary": 0.59,
+  "caveat": "Stage A margins are unpaired absolute differences across corpora on XLS-R 0.3B; this is a paired within-corpus difference on XLSR-53. Calibration anchor only."
+ },
+ "language_metadata": "results/fleurs_languages.json",
+ "pretraining_lists": {
+  "xlsr53": "results/xlsr53_languages.json",
+  "xlsr300m": "results/xlsr_300m_languages.json"
+ }
+}

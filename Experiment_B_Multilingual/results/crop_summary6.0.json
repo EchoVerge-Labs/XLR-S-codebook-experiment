@@ -1,0 +1,84 @@
+{
+ "window_seconds": 6.0,
+ "percentile": 25,
+ "raw_percentile_seconds": 9.48,
+ "n_pooled_clips": 9500,
+ "per_language": {
+  "bn_in": {
+   "kept": 489,
+   "dropped": 11
+  },
+  "cmn_hans_cn": {
+   "kept": 476,
+   "dropped": 24
+  },
+  "cs_cz": {
+   "kept": 478,
+   "dropped": 22
+  },
+  "el_gr": {
+   "kept": 475,
+   "dropped": 25
+  },
+  "en_us": {
+   "kept": 449,
+   "dropped": 51
+  },
+  "et_ee": {
+   "kept": 491,
+   "dropped": 9
+  },
+  "fa_ir": {
+   "kept": 499,
+   "dropped": 1
+  },
+  "fi_fi": {
+   "kept": 491,
+   "dropped": 9
+  },
+  "id_id": {
+   "kept": 493,
+   "dropped": 7
+  },
+  "jv_id": {
+   "kept": 497,
+   "dropped": 3
+  },
+  "kk_kz": {
+   "kept": 499,
+   "dropped": 1
+  },
+  "ml_in": {
+   "kept": 491,
+   "dropped": 9
+  },
+  "mr_in": {
+   "kept": 489,
+   "dropped": 11
+  },
+  "my_mm": {
+   "kept": 491,
+   "dropped": 9
+  },
+  "pl_pl": {
+   "kept": 448,
+   "dropped": 52
+  },
+  "ta_in": {
+   "kept": 476,
+   "dropped": 24
+  },
+  "uz_uz": {
+   "kept": 474,
+   "dropped": 26
+  },
+  "xh_za": {
+   "kept": 485,
+   "dropped": 15
+  },
+  "zu_za": {
+   "kept": 500,
+   "dropped": 0
+  }
+ }
+}
