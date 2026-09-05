@@ -107,7 +107,7 @@ for c, (rating, closest, why) in PROXIMITY.items():
 # is itself the finding and is reported as such.
 ANALYSIS_ARMS = {
     "full":    dict(crop_seconds=None,
-                    question="each language as actually spoken (unmodified Stage A protocol)"),
+                    question="each language as actually spoken (unmodified Experiment A protocol)"),
     "cropped": dict(crop_seconds="P25_POOLED",
                     question="each language at matched context per clip"),
 }
@@ -126,7 +126,7 @@ CROP_ROUND_TO = 0.5
 REPORT_PAIR_DURATION_CORRELATION = True
 
 # The duration confound is characterised on FLEURS itself, per language, rather than
-# extrapolated from Stage A's VAD-segmented YouTube corpus where clip length also
+# extrapolated from Experiment A's VAD-segmented YouTube corpus where clip length also
 # tracks segment quality.
 REPORT_PER_LANGUAGE_DURATION_RHO = True
 
@@ -155,14 +155,14 @@ PROXIMITY_SENSITIVITY = {"my_mm": "CLOSE"}
 # unequally by language. The cure partially reintroduces the disease. At 6.0 s
 # the differential falls to 10.4 points.
 #
-#   full   (no crop) : PRIMARY OVERALL - unmodified Stage A protocol, comparable
-#                      with Stage A, "each language as actually spoken"
+#   full   (no crop) : PRIMARY OVERALL - unmodified Experiment A protocol, comparable
+#                      with Experiment A, "each language as actually spoken"
 #   crop6.0          : PRIMARY CROPPED  - "each language at matched context"
 #   crop9.0          : SENSITIVITY      - the registered P25 rule, reported alongside
 #
 # The P25 rule is not abandoned; it is demoted to sensitivity and still reported.
 ARM_ROLES = {
-    "full":    "PRIMARY OVERALL (unmodified Stage A protocol)",
+    "full":    "PRIMARY OVERALL (unmodified Experiment A protocol)",
     "crop6.0": "PRIMARY CROPPED (matched context, low differential loss)",
     "crop9.0": "SENSITIVITY (pre-registered P25 rule)",
 }

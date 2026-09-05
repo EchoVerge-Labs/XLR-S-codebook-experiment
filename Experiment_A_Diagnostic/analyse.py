@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Aggregate Stage A per-frame arrays into statistics, figures and CSVs."""
+"""Aggregate Experiment A per-frame arrays into statistics, figures and CSVs."""
 import os, json, itertools
 import numpy as np, pandas as pd
 from scipy import stats

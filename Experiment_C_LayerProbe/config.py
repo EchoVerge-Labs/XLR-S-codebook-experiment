@@ -1,7 +1,7 @@
 """
 Experiment C - layer-wise probing. PRE-REGISTERED CONFIGURATION.
 
-Fixed before any probe was trained. Stage A and Experiment B both returned
+Fixed before any probe was trained. Experiment A and Experiment B both returned
 equivalence-bounded nulls on the acoustic codebook, so the low-resource penalty is
 somewhere else; this experiment localises it by depth.
 
@@ -153,7 +153,7 @@ CRITERIA = dict(
 SCALING_HOURS = [0.5, 1.0, 2.0, 3.0]
 
 # ----------------------------------------------------------------- instrument validation
-# Experiment C's equivalent of Stage A's white-noise control. Run BEFORE interpreting
+# Experiment C's equivalent of Experiment A's white-noise control. Run BEFORE interpreting
 # anything. If the floor control produces structured curves, the probe is broken.
 FLOOR_CONTROL = dict(
     model="randomly initialised wav2vec2 of identical architecture (same config, seed 0)",
@@ -166,7 +166,7 @@ EXPECTED_PROFILE = "speaker-ID best layer < CTC best layer, in every language"
 
 # ----------------------------------------------------------------- known limits
 LIMITS = [
-    "Read speech only. Stage A (except its YouTube arm), Experiment B and Experiment C "
+    "Read speech only. Experiment A (except its YouTube arm), Experiment B and Experiment C "
     "are all read-speech-anchored, while the project's target data is scraped in-the-"
     "wild audio. This is a scope limit of the whole evidential base, not of this "
     "experiment alone.",

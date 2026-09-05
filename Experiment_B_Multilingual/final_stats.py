@@ -12,7 +12,7 @@ ARMS = [("_full", "full", "Full clips (PRIMARY OVERALL)"),
         ("_crop6.0", "crop6", "6.0 s crop (PRIMARY CROPPED)"),
         ("_crop9.0", "crop9", "9.0 s crop (SENSITIVITY)")]
 
-# Equivalence margins calibrated on Stage A's positive controls: the InfoNCE increase
+# Equivalence margins calibrated on Experiment A's positive controls: the InfoNCE increase
 # each knowingly-degrading perturbation caused relative to clean English.
 # NOTE: those are UNPAIRED ABSOLUTE differences across corpora on XLS-R 0.3B, whereas
 # this is a PAIRED WITHIN-CORPUS difference on XLSR-53. The transfer is not exact -
@@ -77,7 +77,7 @@ def main():
                    for r in json.load(open(f"{RES}/fleurs_languages.json"))})
     out = {"stage_a_control_margins": STAGE_A_CONTROLS,
            "margin_primary": MARGIN_PRIMARY, "margin_secondary": MARGIN_SECONDARY,
-           "margin_caveat": ("Stage A margins are unpaired absolute differences across "
+           "margin_caveat": ("Experiment A margins are unpaired absolute differences across "
                              "corpora on XLS-R 0.3B; this is a paired within-corpus "
                              "difference on XLSR-53. Calibration anchor, not a formally "
                              "matched equivalence margin."),
@@ -106,7 +106,7 @@ def main():
     print("\n" + "=" * 104)
     print(f"  EQUIVALENCE TESTING (TOST) - paired InfoNCE differences, XLSR-53")
     print("=" * 104)
-    print("  Stage A positive controls (InfoNCE increase vs clean English):")
+    print("  Experiment A positive controls (InfoNCE increase vs clean English):")
     for k, v in STAGE_A_CONTROLS.items():
         print(f"     {k:<20}{v:>+7.3f}{'   <- primary margin' if abs(v-MARGIN_PRIMARY)<1e-9 else ('   <- secondary margin' if abs(v-MARGIN_SECONDARY)<1e-9 else '')}")
     for margin, lab in [(MARGIN_PRIMARY, "PRIMARY"), (MARGIN_SECONDARY, "SECONDARY")]:

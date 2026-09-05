@@ -47,7 +47,7 @@ cfg = dict(
     distant_subgroup_reporting=S.DISTANT_SUBGROUP_REPORTING,
     equivalence=dict(stage_a_control_margins=STAGE_A_CONTROLS,
                      margin_primary=MARGIN_PRIMARY, margin_secondary=MARGIN_SECONDARY,
-                     caveat=("Stage A margins are unpaired absolute differences across "
+                     caveat=("Experiment A margins are unpaired absolute differences across "
                              "corpora on XLS-R 0.3B; this is a paired within-corpus "
                              "difference on XLSR-53. Calibration anchor only.")),
     language_metadata=f"{RES}/fleurs_languages.json",

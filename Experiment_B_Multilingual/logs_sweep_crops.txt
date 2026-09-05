@@ -1,0 +1,101 @@
+########## CROP 6.0s (PRIMARY CROPPED) ##########
+
+=== xlsr53 : facebook/wav2vec2-large-xlsr-53 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/429 [00:00<?, ?it/s]Loading weights: 100%|██████████| 429/429 [00:00<00:00, 37433.56it/s]
+  model on cuda | dtype torch.bfloat16 | codebook G=2 V=320 | codevectors (1, 640, 384)
+  [xlsr53] bn_in          489 files  114,801 speech frames     88s
+  [xlsr53] fa_ir          499 files  106,424 speech frames     90s
+  [xlsr53] pl_pl          448 files   95,756 speech frames     81s
+  [xlsr53] et_ee          491 files   98,498 speech frames     89s
+  [xlsr53] kk_kz          499 files   85,565 speech frames     90s
+  [xlsr53] ta_in          476 files  110,436 speech frames     86s
+  [xlsr53] id_id          493 files  128,919 speech frames     89s
+  [xlsr53] cmn_hans_cn    476 files   77,192 speech frames     86s
+  [xlsr53] zu_za          500 files   98,991 speech frames     90s
+  [xlsr53] mr_in          489 files  105,343 speech frames     88s
+  [xlsr53] el_gr          475 files  102,078 speech frames     86s
+  [xlsr53] cs_cz          478 files   87,177 speech frames     87s
+  [xlsr53] fi_fi          491 files   83,228 speech frames     89s
+  [xlsr53] uz_uz          474 files   98,869 speech frames     86s
+  [xlsr53] ml_in          491 files  111,285 speech frames     89s
+  [xlsr53] jv_id          497 files  124,280 speech frames     90s
+  [xlsr53] my_mm          491 files   78,492 speech frames     89s
+  [xlsr53] xh_za          485 files  108,301 speech frames     88s
+  [xlsr53] en_us          449 files  102,778 speech frames     81s
+
+=== xlsr300m : facebook/wav2vec2-xls-r-300m ===
+Loading weights:   0%|          | 0/429 [00:00<?, ?it/s]Loading weights: 100%|██████████| 429/429 [00:00<00:00, 41911.78it/s]
+  model on cuda | dtype torch.bfloat16 | codebook G=2 V=320 | codevectors (1, 640, 384)
+  [xlsr300m] bn_in          489 files  114,801 speech frames     88s
+  [xlsr300m] fa_ir          499 files  106,424 speech frames     90s
+  [xlsr300m] pl_pl          448 files   95,756 speech frames     81s
+  [xlsr300m] et_ee          491 files   98,498 speech frames     89s
+  [xlsr300m] kk_kz          499 files   85,565 speech frames     90s
+  [xlsr300m] ta_in          476 files  110,436 speech frames     86s
+  [xlsr300m] id_id          493 files  128,919 speech frames     89s
+  [xlsr300m] cmn_hans_cn    476 files   77,192 speech frames     86s
+  [xlsr300m] zu_za          500 files   98,991 speech frames     90s
+  [xlsr300m] mr_in          489 files  105,343 speech frames     88s
+  [xlsr300m] el_gr          475 files  102,078 speech frames     86s
+  [xlsr300m] cs_cz          478 files   87,177 speech frames     86s
+  [xlsr300m] fi_fi          491 files   83,228 speech frames     88s
+  [xlsr300m] uz_uz          474 files   98,869 speech frames     85s
+  [xlsr300m] ml_in          491 files  111,285 speech frames     89s
+  [xlsr300m] jv_id          497 files  124,280 speech frames     90s
+  [xlsr300m] my_mm          491 files   78,492 speech frames     88s
+  [xlsr300m] xh_za          485 files  108,301 speech frames     87s
+  [xlsr300m] en_us          449 files  102,778 speech frames     81s
+
+wrote 18,382 per-file rows, 0 failures -> /home/anas22/EchoVerge-LABS/Experiment_B_Multilingual/results/
+########## CROP 9.0s (SENSITIVITY) ##########
+
+=== xlsr53 : facebook/wav2vec2-large-xlsr-53 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/429 [00:00<?, ?it/s]Loading weights: 100%|██████████| 429/429 [00:00<00:00, 29096.03it/s]
+  model on cuda | dtype torch.bfloat16 | codebook G=2 V=320 | codevectors (1, 640, 384)
+  [xlsr53] bn_in          413 files  147,668 speech frames     86s
+  [xlsr53] fa_ir          478 files  160,667 speech frames     99s
+  [xlsr53] pl_pl          262 files   86,185 speech frames     55s
+  [xlsr53] et_ee          404 files  125,707 speech frames     84s
+  [xlsr53] kk_kz          469 files  128,021 speech frames     97s
+  [xlsr53] ta_in          380 files  135,008 speech frames     79s
+  [xlsr53] id_id          393 files  157,012 speech frames     82s
+  [xlsr53] cmn_hans_cn    356 files   86,146 speech frames     75s
+  [xlsr53] zu_za          462 files  143,688 speech frames     96s
+  [xlsr53] mr_in          413 files  136,113 speech frames     86s
+  [xlsr53] el_gr          327 files  108,734 speech frames     69s
+  [xlsr53] cs_cz          377 files  104,359 speech frames     79s
+  [xlsr53] fi_fi          420 files  115,501 speech frames     88s
+  [xlsr53] uz_uz          363 files  112,429 speech frames     76s
+  [xlsr53] ml_in          429 files  149,417 speech frames     90s
+  [xlsr53] jv_id          430 files  165,709 speech frames     90s
+  [xlsr53] my_mm          456 files  122,810 speech frames     96s
+  [xlsr53] xh_za          409 files  137,762 speech frames     86s
+  [xlsr53] en_us          285 files   97,755 speech frames     60s
+
+=== xlsr300m : facebook/wav2vec2-xls-r-300m ===
+Loading weights:   0%|          | 0/429 [00:00<?, ?it/s]Loading weights: 100%|██████████| 429/429 [00:00<00:00, 41892.26it/s]
+  model on cuda | dtype torch.bfloat16 | codebook G=2 V=320 | codevectors (1, 640, 384)
+  [xlsr300m] bn_in          413 files  147,668 speech frames     87s
+  [xlsr300m] fa_ir          478 files  160,667 speech frames    100s
+  [xlsr300m] pl_pl          262 files   86,185 speech frames     55s
+  [xlsr300m] et_ee          404 files  125,707 speech frames     85s
+  [xlsr300m] kk_kz          469 files  128,021 speech frames     99s
+  [xlsr300m] ta_in          380 files  135,008 speech frames     80s
+  [xlsr300m] id_id          393 files  157,012 speech frames     83s
+  [xlsr300m] cmn_hans_cn    356 files   86,146 speech frames     75s
+  [xlsr300m] zu_za          462 files  143,688 speech frames     97s
+  [xlsr300m] mr_in          413 files  136,113 speech frames     87s
+  [xlsr300m] el_gr          327 files  108,734 speech frames     69s
+  [xlsr300m] cs_cz          377 files  104,359 speech frames     79s
+  [xlsr300m] fi_fi          420 files  115,501 speech frames     88s
+  [xlsr300m] uz_uz          363 files  112,429 speech frames     76s
+  [xlsr300m] ml_in          429 files  149,417 speech frames     90s
+  [xlsr300m] jv_id          430 files  165,709 speech frames     90s
+  [xlsr300m] my_mm          456 files  122,810 speech frames     96s
+  [xlsr300m] xh_za          409 files  137,762 speech frames     86s
+  [xlsr300m] en_us          285 files   97,755 speech frames     60s
+
+wrote 15,052 per-file rows, 0 failures -> /home/anas22/EchoVerge-LABS/Experiment_B_Multilingual/results/
+BOTH CROP ARMS DONE

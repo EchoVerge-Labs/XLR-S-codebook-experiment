@@ -356,7 +356,7 @@ def duration_diagnostics(df, ckpt, lm):
     out = {}
 
     # (3) per-language rho(duration, InfoNCE) - the confound's actual size here,
-    # rather than extrapolated from Stage A's VAD-segmented YouTube corpus.
+    # rather than extrapolated from Experiment A's VAD-segmented YouTube corpus.
     per = {}
     for cfg, g in sub.groupby("language"):
         if g.duration.nunique() < 5:

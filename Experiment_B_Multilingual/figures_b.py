@@ -48,13 +48,13 @@ def main():
         dz = t["mean"] / t["sd"]
         ax.text(-0.72, y + .30, f"diff {t['mean']:+.3f}    dz {dz:+.2f}    TOST p = {t['p_tost']:.4f}",
                 fontsize=9.6, ha="left", va="center", color=col, weight="600")
-    # Stage A calibration anchors, staggered so the two near 0.29/0.31 do not collide
+    # Experiment A calibration anchors, staggered so the two near 0.29/0.31 do not collide
     for i, (lab, v) in enumerate(list(STAGE_A_CONTROLS.items())[:3]):
         yv = -0.62 - 0.30 * (i % 2)
         ax.plot(v, yv, "v", color="#8E2C48", ms=8, zorder=4)
         ax.text(v + .015, yv, f" {lab} ({v:+.2f})", fontsize=8.2, ha="left", va="center",
                 color="#8E2C48")
-    ax.text(-0.72, -0.62, "Stage A positive controls:", fontsize=8.6, style="italic",
+    ax.text(-0.72, -0.62, "Experiment A positive controls:", fontsize=8.6, style="italic",
             color="#8E2C48", va="center")
     ax.set_yticks(ys); ax.set_yticklabels([a[1] for a in ARMS], fontsize=11.5)
     ax.set_ylim(-1.30, 2.75); ax.set_xlim(-0.78, 0.95)
@@ -66,7 +66,7 @@ def main():
     ax.text(.5, 1.035, "9 family-matched pairs, XLSR-53   |   thick bar = 90% CI (TOST), "
             "thin = 95% CI   |   shaded = equivalence bounds (0.289 / 0.590)",
             transform=ax.transAxes, ha="center", fontsize=9.6, color="#444")
-    fig.text(.5, .022, "Equivalence margins are calibrated on Stage A positive controls. Those are unpaired "
+    fig.text(.5, .022, "Equivalence margins are calibrated on Experiment A positive controls. Those are unpaired "
              "absolute differences across corpora on XLS-R 0.3B, while this is a paired within-corpus\n"
              "difference on XLSR-53 - a calibration anchor, not a formally matched equivalence margin.",
              ha="center", fontsize=8.5, style="italic")

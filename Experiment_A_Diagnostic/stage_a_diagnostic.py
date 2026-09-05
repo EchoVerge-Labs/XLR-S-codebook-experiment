@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Stage A - Quantization residual diagnostic for XLS-R (wav2vec2-large-xlsr-53).
+Experiment A - Quantization residual diagnostic for XLS-R (wav2vec2-large-xlsr-53).
 
 Question: does the frozen XLSR-53 codebook represent Sinhala/Tamil speech as well
 as it represents English?

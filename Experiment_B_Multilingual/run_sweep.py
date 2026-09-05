@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-"""Experiment B sweep - the Stage A instrument applied across languages and checkpoints.
+"""Experiment B sweep - the Experiment A instrument applied across languages and checkpoints.
 
-The measurement functions are imported from Stage A rather than reimplemented, so the
+The measurement functions are imported from Experiment A rather than reimplemented, so the
 numbers are directly comparable with that experiment:
     stage_a_diagnostic.Diagnostic.run_file  -> frame metrics (residual, entropy, codes, rms)
     masked_probe.probe_file                 -> masked contrastive metrics (InfoNCE, gap)
 masked_probe's module constants supply the validated protocol unchanged:
     MASK_PROB=0.065, MASK_SPAN=10, N_NEG=100, TEMP=0.1
-Stage A selects its checkpoint through a module-level constant, so that constant is
+Experiment A selects its checkpoint through a module-level constant, so that constant is
 rebound before each Diagnostic is constructed; nothing else is altered.
 """
 import os, sys, json, time, argparse
@@ -41,7 +41,7 @@ def perplexity(codes):
 
 
 def run_checkpoint(tag, ckpt, manifest, limit=None):
-    SA.MODEL = ckpt                       # Stage A picks its checkpoint from this global
+    SA.MODEL = ckpt                       # Experiment A picks its checkpoint from this global
     diag = SA.Diagnostic(dtype=torch.bfloat16)
     fe = Wav2Vec2FeatureExtractor.from_pretrained(ckpt)
     model = diag.model                    # same frozen eval-mode model for both probes
@@ -57,7 +57,7 @@ def run_checkpoint(tag, ckpt, manifest, limit=None):
             except Exception as e:
                 failures.append(dict(cfg=cfg, path=r["path"], stage="frames", err=repr(e)[:140]))
                 continue
-            # per-file energy gate, identical to Stage A
+            # per-file energy gate, identical to Experiment A
             rms = o["rms"]
             m = rms > SPEECH_FRAC * np.quantile(rms, SPEECH_Q)
             if m.sum() < 10:
@@ -111,7 +111,7 @@ def main():
     a = ap.parse_args()
 
     if a.max_seconds:
-        # Stage A truncates via these module constants; setting them equalises the
+        # Experiment A truncates via these module constants; setting them equalises the
         # amount of context every masked position can draw on.
         SA.MAX_SECONDS = a.max_seconds
         MP.MAX_S = a.max_seconds
