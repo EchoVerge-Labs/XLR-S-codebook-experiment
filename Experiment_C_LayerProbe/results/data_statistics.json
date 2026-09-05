@@ -1,0 +1,92 @@
+{
+ "sinhala": {
+  "language": "sinhala",
+  "n_speakers_pool": 40,
+  "ctc_train": {
+   "n": 2519,
+   "hours": 3.0001111111111176,
+   "speakers": 30,
+   "mean_clip": 4.2875744342993345
+  },
+  "ctc_test": {
+   "n": 449,
+   "hours": 0.5006666666666667,
+   "speakers": 10,
+   "mean_clip": 4.014253897550112
+  },
+  "speaker_train": {
+   "n": 2524
+  },
+  "speaker_test": {
+   "n": 444
+  },
+  "utts_per_speaker": {
+   "min": 31,
+   "median": 79.0,
+   "max": 117
+  },
+  "char_vocab_size": 106,
+  "vocab_size_with_blank": 107,
+  "speaker_disjoint_ctc": true
+ },
+ "tamil": {
+  "language": "tamil",
+  "n_speakers_pool": 40,
+  "ctc_train": {
+   "n": 1789,
+   "hours": 3.0003437037037055,
+   "speakers": 30,
+   "mean_clip": 6.0375837525619565
+  },
+  "ctc_test": {
+   "n": 365,
+   "hours": 0.5003851851851856,
+   "speakers": 10,
+   "mean_clip": 4.935305936073063
+  },
+  "speaker_train": {
+   "n": 1833
+  },
+  "speaker_test": {
+   "n": 321
+  },
+  "utts_per_speaker": {
+   "min": 29,
+   "median": 55.0,
+   "max": 90
+  },
+  "char_vocab_size": 49,
+  "vocab_size_with_blank": 50,
+  "speaker_disjoint_ctc": true
+ },
+ "english": {
+  "language": "english",
+  "n_speakers_pool": 40,
+  "ctc_train": {
+   "n": 1840,
+   "hours": 3.0002257638888863,
+   "speakers": 30,
+   "mean_clip": 5.870006929347821
+  },
+  "ctc_test": {
+   "n": 327,
+   "hours": 0.5017359375000001,
+   "speakers": 10,
+   "mean_clip": 5.523698394495414
+  },
+  "speaker_train": {
+   "n": 1840
+  },
+  "speaker_test": {
+   "n": 327
+  },
+  "utts_per_speaker": {
+   "min": 20,
+   "median": 56.0,
+   "max": 87
+  },
+  "char_vocab_size": 34,
+  "vocab_size_with_blank": 35,
+  "speaker_disjoint_ctc": true
+ }
+}
