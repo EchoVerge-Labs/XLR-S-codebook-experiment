@@ -1,0 +1,31 @@
+================================================================================================
+  INTERPRETATION
+================================================================================================
+
+--- ARM: in_the_wild ---
+  Sinhala_YT     cosine residual      ratio vs English = 0.996x
+  Sinhala_YT     assignment entropy   ratio vs English = 1.067x
+  Sinhala_YT     assignment margin    ratio vs English = 0.941x
+  Tamil_YT       cosine residual      ratio vs English = 0.996x
+  Tamil_YT       assignment entropy   ratio vs English = 1.035x
+  Tamil_YT       assignment margin    ratio vs English = 0.958x
+  -> Sinhala_YT residual ratio 0.996x : NO meaningful gap detected (within ~10% of English control).
+  -> Tamil_YT residual ratio 0.996x : NO meaningful gap detected (within ~10% of English control).
+  perplexity (frame-matched, mean over groups): Sinhala_YT=56.1, Tamil_YT=53.3, English_CV=63.7
+  utilisation (frame-matched): Sinhala_YT=24.1%, Tamil_YT=24.2%, English_CV=24.2%
+  distinct recording sources in sample: Sinhala_YT=604, Tamil_YT=538, English_CV=722
+  perplexity (source- AND frame-matched): Sinhala_YT=55.9, Tamil_YT=49.9, English_CV=61.3
+
+--- ARM: read_matched ---
+  Sinhala_read   cosine residual      ratio vs English = 0.941x
+  Sinhala_read   assignment entropy   ratio vs English = 0.840x
+  Sinhala_read   assignment margin    ratio vs English = 1.156x
+  Tamil_read     cosine residual      ratio vs English = 0.960x
+  Tamil_read     assignment entropy   ratio vs English = 0.872x
+  Tamil_read     assignment margin    ratio vs English = 1.096x
+  -> Sinhala_read residual ratio 0.941x : NO meaningful gap detected (within ~10% of English control).
+  -> Tamil_read residual ratio 0.960x : NO meaningful gap detected (within ~10% of English control).
+  perplexity (frame-matched, mean over groups): Sinhala_read=41.4, Tamil_read=50.2, English_CV=63.7
+  utilisation (frame-matched): Sinhala_read=24.1%, Tamil_read=23.6%, English_CV=24.2%
+  distinct recording sources in sample: Sinhala_read=12, Tamil_read=50, English_CV=722
+  perplexity (source- AND frame-matched): Sinhala_read=41.1, Tamil_read=48.5, English_CV=61.3

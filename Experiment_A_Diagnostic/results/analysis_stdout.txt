@@ -1,0 +1,55 @@
+
+================================================================================================
+  SUMMARY  (speech-like frames; usage stats at matched budget of 127,679 frames)
+================================================================================================
+                  label  n_files  n_frames_speech  hours  resid_cos_mean  resid_cos_median  resid_cos_std  resid_cos_p95  entropy_mean  margin_mean  matched_perplexity_mean  matched_utilisation_mean  n_sources  srcmatched_perplexity_mean  srcmatched_utilisation_mean
+      Sinhala (YouTube)      999           563507 4.0854          0.9252            0.9282         0.0889         1.0636        0.1990       6.9507                  82.4167                    0.3047        604                     80.8238                       0.3000
+        Tamil (YouTube)     1000           634184 4.6167          0.9278            0.9298         0.0870         1.0673        0.1911       7.1435                  78.5673                    0.3047        538                     75.3226                       0.2984
+ English (Common Voice)     1000           127679 1.4251          0.9151            0.9222         0.1028         1.0685        0.1901       7.2217                  86.6986                    0.3047        722                     83.5229                       0.2969
+Sinhala (OpenSLR, read)     1000           151998 1.5986          0.9049            0.9079         0.1056         1.0670        0.1692       7.9107                  63.2383                    0.3016         12                     62.9503                       0.3016
+  Tamil (OpenSLR, read)     1000           157895 1.6375          0.9113            0.9163         0.1037         1.0684        0.1668       7.8959                  72.4687                    0.3031         50                     69.8168                       0.3016
+
+================================================================================================
+  FILE-LEVEL SIGNIFICANCE (per-file means; Welch t-test)
+================================================================================================
+         arm            a          b  mean_a  mean_b  ratio_a_over_b  cohens_d  welch_p
+ in_the_wild   Sinhala_YT   Tamil_YT  0.9113  0.9086          1.0029    0.0828   0.0643
+ in_the_wild   Sinhala_YT English_CV  0.9113  0.8879          1.0263    0.5464   0.0000
+ in_the_wild     Tamil_YT English_CV  0.9086  0.8879          1.0233    0.5267   0.0000
+read_matched Sinhala_read Tamil_read  0.8684  0.8611          1.0086    0.2448   0.0000
+read_matched Sinhala_read English_CV  0.8684  0.8879          0.9781   -0.5113   0.0000
+read_matched   Tamil_read English_CV  0.8611  0.8879          0.9698   -0.6369   0.0000
+
+================================================================================================
+  INTERPRETATION
+================================================================================================
+
+--- ARM: in_the_wild ---
+  Sinhala_YT     cosine residual      ratio vs English = 1.011x
+  Sinhala_YT     assignment entropy   ratio vs English = 1.047x
+  Sinhala_YT     assignment margin    ratio vs English = 0.962x
+  Tamil_YT       cosine residual      ratio vs English = 1.014x
+  Tamil_YT       assignment entropy   ratio vs English = 1.005x
+  Tamil_YT       assignment margin    ratio vs English = 0.989x
+  -> Sinhala_YT residual ratio 1.011x : NO meaningful gap detected (within ~10% of English control).
+  -> Tamil_YT residual ratio 1.014x : NO meaningful gap detected (within ~10% of English control).
+  perplexity (frame-matched, mean over groups): Sinhala_YT=82.4, Tamil_YT=78.6, English_CV=86.7
+  utilisation (frame-matched): Sinhala_YT=30.5%, Tamil_YT=30.5%, English_CV=30.5%
+  distinct recording sources in sample: Sinhala_YT=604, Tamil_YT=538, English_CV=722
+  perplexity (source- AND frame-matched): Sinhala_YT=80.8, Tamil_YT=75.3, English_CV=83.5
+
+--- ARM: read_matched ---
+  Sinhala_read   cosine residual      ratio vs English = 0.989x
+  Sinhala_read   assignment entropy   ratio vs English = 0.890x
+  Sinhala_read   assignment margin    ratio vs English = 1.095x
+  Tamil_read     cosine residual      ratio vs English = 0.996x
+  Tamil_read     assignment entropy   ratio vs English = 0.877x
+  Tamil_read     assignment margin    ratio vs English = 1.093x
+  -> Sinhala_read residual ratio 0.989x : NO meaningful gap detected (within ~10% of English control).
+  -> Tamil_read residual ratio 0.996x : NO meaningful gap detected (within ~10% of English control).
+  perplexity (frame-matched, mean over groups): Sinhala_read=63.2, Tamil_read=72.5, English_CV=86.7
+  utilisation (frame-matched): Sinhala_read=30.2%, Tamil_read=30.3%, English_CV=30.5%
+  distinct recording sources in sample: Sinhala_read=12, Tamil_read=50, English_CV=722
+  perplexity (source- AND frame-matched): Sinhala_read=63.0, Tamil_read=69.8, English_CV=83.5
+
+figures + CSVs -> /home/anas22/EchoVerge-LABS/Stage_A_Diagnostic/results/

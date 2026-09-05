@@ -1,0 +1,16 @@
+language,genre,files,hours,mean_dur_s
+Sinhala,drama,29491,80.075,9.77
+Sinhala,education,26047,101.987,14.1
+Sinhala,podcast_or_discussion,16487,103.983,22.71
+Sinhala,interview,13239,74.723,20.32
+Sinhala,political_speech,9545,44.422,16.75
+Sinhala,news,9072,68.345,27.12
+Sinhala,vlog,8964,40.985,16.46
+Sinhala,TOTAL,112845,514.52,16.41
+Tamil,education,35466,152.937,15.52
+Tamil,interview,14973,94.65,22.76
+Tamil,drama,12225,65.87,19.4
+Tamil,news,9077,77.09,30.57
+Tamil,podcast_or_discussion,8222,47.937,20.99
+Tamil,vlog,7329,36.861,18.11
+Tamil,TOTAL,87292,475.346,19.6
