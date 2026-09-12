@@ -11,7 +11,9 @@ reported with the confounds it cannot separate.
 |---|---|---|
 | **A** — [`Experiment_A_Diagnostic/`](Experiment_A_Diagnostic/) | Is the codebook a worse fit for Sinhala/Tamil than for English? | No. Equivalence-bounded null; the sign is reversed. |
 | **B** — [`Experiment_B_Multilingual/`](Experiment_B_Multilingual/) | Does presence in the pre-training language list predict codebook fit, across 18 languages? | No. Equivalent to zero in three context regimes. |
-| **C** — [`Experiment_C_LayerProbe/`](Experiment_C_LayerProbe/) | If not the codebook, where by depth? | In progress. |
+| **C** — [`Experiment_C_LayerProbe/`](Experiment_C_LayerProbe/) | If not the codebook, where by depth? | Nowhere in particular; all three languages use the same layers. |
+
+Full write-up with methodology, results and references: [`PAPER.html`](PAPER.html).
 
 ## Experiment A — quantization residual diagnostic
 
