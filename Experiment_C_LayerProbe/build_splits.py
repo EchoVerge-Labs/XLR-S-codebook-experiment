@@ -32,7 +32,7 @@ def load_english():
     """CV English: speaker = client_id, transcript from train.tsv."""
     meta = {}
     with open(f"{ROOT}/data/cv_en_train.tsv", encoding="utf-8") as fh:
-        for r in csv.DictReader(fh, delimiter="\t"):
+        for r in csv.DictReader(fh, delimiter="\t", quoting=csv.QUOTE_NONE):
             meta[r["path"]] = r["sentence"]
     recs = []
     base = f"{ROOT}/data/english_cv"

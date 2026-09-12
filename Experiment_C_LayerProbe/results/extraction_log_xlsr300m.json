@@ -1,50 +1,18 @@
 [
  {
-  "lang": "sinhala",
+  "lang": "tamil_cv",
   "split": "train",
-  "n_utts": 2519,
-  "frames": 537501,
+  "n_utts": 1658,
+  "frames": 537329,
   "n_failed": 0,
-  "seconds": 341.9
+  "seconds": 123.6
  },
  {
-  "lang": "sinhala",
+  "lang": "tamil_cv",
   "split": "test",
-  "n_utts": 449,
-  "frames": 89671,
+  "n_utts": 388,
+  "frames": 89560,
   "n_failed": 0,
-  "seconds": 62.5
- },
- {
-  "lang": "tamil",
-  "split": "train",
-  "n_utts": 1789,
-  "frames": 538734,
-  "n_failed": 0,
-  "seconds": 302.7
- },
- {
-  "lang": "tamil",
-  "split": "test",
-  "n_utts": 365,
-  "frames": 89805,
-  "n_failed": 0,
-  "seconds": 58.5
- },
- {
-  "lang": "english",
-  "split": "train",
-  "n_utts": 1840,
-  "frames": 537864,
-  "n_failed": 0,
-  "seconds": 308.2
- },
- {
-  "lang": "english",
-  "split": "test",
-  "n_utts": 327,
-  "frames": 89941,
-  "n_failed": 0,
-  "seconds": 52.1
+  "seconds": 26.4
  }
 ]

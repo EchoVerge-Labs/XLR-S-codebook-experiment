@@ -16,7 +16,7 @@ URL = ("https://huggingface.co/datasets/fsicoli/common_voice_17_0/resolve/main/"
 
 spk, txt = {}, {}
 with open(f"{ROOT}/data/cv_ta_train.tsv", encoding="utf-8") as fh:
-    for r in csv.DictReader(fh, delimiter="\t"):
+    for r in csv.DictReader(fh, delimiter="\t", quoting=csv.QUOTE_NONE):
         spk[r["path"]] = r["client_id"]; txt[r["path"]] = r["sentence"]
 os.makedirs(OUT, exist_ok=True)
 have = collections.Counter()

@@ -15,12 +15,45 @@ from config import TRAIN_HOURS, TEST_HOURS, CTC_TEST_SPEAKER_FRACTION, SPEAKER_T
 csv.field_size_limit(10 ** 7)
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SEED = 1234
+MAX_CHARS_PER_SEC = 25.0   # generous ceiling; real speech here runs 6-20
+
+
+
+def sanity_check(recs, label):
+    """Fail loudly on transcript/audio mismatch.
+
+    A Common Voice TSV read with csv's default QUOTE_MINIMAL silently swallows tab
+    separators whenever a sentence contains a quote character, concatenating the
+    following columns (up_votes, age, gender, locale, hash) into the transcript. That
+    produced 150-character references on 4.6 s clips and made an entire arm look like a
+    probe failure. QUOTE_NONE fixes it; this guard makes sure nothing like it returns
+    unnoticed.
+    """
+    import numpy as _np
+    cps = _np.array([len(r["text"]) / max(r["duration"], 1e-6) for r in recs])
+    bad = [r for r in recs if len(r["text"]) / max(r["duration"], 1e-6) > MAX_CHARS_PER_SEC]
+    print(f"  {label}: n={len(recs)} chars/sec mean {cps.mean():.2f} max {cps.max():.1f} "
+          f"| over {MAX_CHARS_PER_SEC}: {len(bad)}")
+    frac = len(bad) / max(len(recs), 1)
+    if frac > 0.02:
+        raise SystemExit(
+            f"ABORT: {len(bad)} of {len(recs)} records in {label} ({frac:.1%}) exceed "
+            f"{MAX_CHARS_PER_SEC} chars/sec. At that rate this is a systematic parsing "
+            f"failure, not corpus noise. Worst: "
+            f"{max(len(r['text'])/r['duration'] for r in bad):.0f} chars/sec.")
+    if bad:
+        # Genuine Common Voice noise: full sentences against truncated recordings.
+        # Dropped as unusable. The same filter is a no-op on the other arms, which have
+        # zero records above the ceiling, so this does not clean one arm preferentially.
+        print(f"    dropping {len(bad)} unusable records ({frac:.2%}) from {label}")
+    return [r for r in recs
+            if len(r["text"]) / max(r["duration"], 1e-6) <= MAX_CHARS_PER_SEC]
 
 
 def main():
     meta = {}
     with open(f"{ROOT}/data/cv_ta_train.tsv", encoding="utf-8") as fh:
-        for r in csv.DictReader(fh, delimiter="\t"):
+        for r in csv.DictReader(fh, delimiter="\t", quoting=csv.QUOTE_NONE):
             meta[r["path"]] = r["sentence"]
     recs = []
     base = f"{ROOT}/data/tamil_cv"
@@ -41,6 +74,7 @@ def main():
                 continue
             recs.append(dict(speaker=s, utt=f[:-4], path=p, text=t, duration=info.duration))
 
+    recs = sanity_check(recs, 'tamil_cv candidates')
     rng = random.Random(SEED)
     by = collections.defaultdict(list)
     for r in recs:
@@ -60,6 +94,8 @@ def main():
         rng.shuffle(g)
         k = max(1, int(round(len(g) * SPEAKER_TEST_UTT_FRACTION)))
         spk_te += g[:k]; spk_tr += g[k:]
+    sanity_check(ctc_train, 'tamil_cv ctc_train')
+    sanity_check(ctc_test, 'tamil_cv ctc_test')
     chars = sorted({c for r in pool for c in r["text"]})
     stats = dict(language="tamil_cv", n_speakers_pool=len(speakers),
                  ctc_train=dict(n=len(ctc_train), hours=sec_tr / 3600, speakers=len(train_spk),

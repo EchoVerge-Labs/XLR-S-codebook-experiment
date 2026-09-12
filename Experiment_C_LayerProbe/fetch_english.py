@@ -18,7 +18,7 @@ URL = ("https://huggingface.co/datasets/fsicoli/common_voice_17_0/resolve/main/"
 
 spk, dense = {}, collections.Counter()
 with open("data/cv_en_train.tsv", encoding="utf-8") as fh:
-    for r in csv.DictReader(fh, delimiter="\t"):
+    for r in csv.DictReader(fh, delimiter="\t", quoting=csv.QUOTE_NONE):
         spk[r["path"]] = r["client_id"]; dense[r["client_id"]] += 1
 keep = {s for s, n in dense.items() if n >= 100}
 print(f"{len(keep):,} speakers with >=100 clips in train.tsv", flush=True)
