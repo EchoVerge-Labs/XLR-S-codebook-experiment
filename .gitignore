@@ -55,3 +55,17 @@
 
 # The discarded pre-fix sweep is not versioned; the corrected run is.
 Experiment_C_LayerProbe/results/probe_results_*_PRE_FIX.json
+
+# ---------------------------------------------------------------- ICASSP submission
+# The paper source and everything needed to rebuild it. The IEEE-supplied template
+# files (Template.tex, the author guide PDF, the sample EPS images) are not ours to
+# redistribute and stay ignored; spconf.sty and IEEEbib.bst are required to compile.
+!ICASSP2027_Paper_Templates/
+ICASSP2027_Paper_Templates/*
+!ICASSP2027_Paper_Templates/paper.tex
+!ICASSP2027_Paper_Templates/references.bib
+!ICASSP2027_Paper_Templates/make_figures.py
+!ICASSP2027_Paper_Templates/spconf.sty
+!ICASSP2027_Paper_Templates/IEEEbib.bst
+!ICASSP2027_Paper_Templates/images/
+!ICASSP2027_Paper_Templates/images/*.pdf
