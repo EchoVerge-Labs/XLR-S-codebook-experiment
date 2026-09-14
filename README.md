@@ -55,6 +55,19 @@ occupy (ρ = −0.014 over 33–321 h).
 Localises the penalty by depth: linear CTC and speaker-ID probes on each of 24
 transformer layers, 3 h of labelled audio per language matched exactly, 3 seeds per cell.
 
+A **fine-tuned arm** (added after review, not pre-registered) trains the same checkpoint
+with a CTC head on the same splits, budget, vocabularies and seeds. It more than halves
+the frozen-probe error in every language — Sinhala 0.275 → 0.129, Tamil 0.170 → 0.062,
+English 0.221 → 0.093 — so at 3 h the binding constraint is labelled data and adaptation,
+not the representation. The ordering across languages is the same frozen or fine-tuned.
+
+## Paper
+
+[`ICASSP2027_Paper_Templates/paper.tex`](ICASSP2027_Paper_Templates/paper.tex) is the
+ICASSP 2027 submission built from these three experiments. Figures are regenerated from
+the result files by `make_figures.py`; the references were each checked against a primary
+source. Build with any LaTeX engine: `tectonic -X compile paper.tex`.
+
 ## Reproducing
 
 ```bash
