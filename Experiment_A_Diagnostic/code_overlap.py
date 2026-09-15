@@ -27,6 +27,9 @@ import numpy as np
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 G, V = 2, 320
+# identical to analyse.py: a frame counts as speech if its RMS exceeds 10% of the
+# file's 90th-percentile RMS. Same constants, same strict inequality.
+SPEECH_Q, SPEECH_FRAC = 0.90, 0.10
 CONDITIONS = ["English_CV", "Sinhala_YT", "Tamil_YT", "Sinhala_read", "Tamil_read",
               "Ctl_SpeedPitch", "Ctl_Babble", "Ctl_Reversed", "Ctl_Tones", "Ctl_WhiteNoise"]
 REFERENCE = "English_CV"
@@ -38,7 +41,7 @@ def load_gated(resdir, cond):
     keep = np.zeros(len(rms), bool)
     for f in np.unique(fid):
         m = fid == f
-        keep[m] = rms[m] >= 0.10 * np.percentile(rms[m], 90)
+        keep[m] = rms[m] > SPEECH_FRAC * np.quantile(rms[m], SPEECH_Q)
     return codes[keep]
 
 

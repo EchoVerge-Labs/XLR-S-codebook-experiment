@@ -100,7 +100,7 @@ Tamil, read           & 2.678 & 0.95 & 0.484 & 1.07 \\
 
 \subsection{Results}
 
-Table~\ref{tab:fit} shows that the masked metrics respond strongly to corruption---white noise drives InfoNCE to chance and collapses the gap---while Sinhala and Tamil sit on the favourable side of English in both recording conditions. The hypothesis is mechanistic, so we also ask \emph{which} codes each language uses, matching every condition to 30,000 gated frames over 20 draws. Sinhala and Tamil occupy 95.8--97.3 of the 320 entries per group against English's 97.5, overlap English's support with Jaccard 0.98--1.00, and place every frame on a code English also uses. Only the frequencies differ: Jensen--Shannon divergence from English is 0.036--0.082, no larger than for English speed-shifted by 1.45$\times$ (0.079). The measure does detect lost inventory---sine chirps fall to 69.9 codes and 0.427, white noise to 6.7 and 0.645---so languages are separable by code frequency~\cite{linke2023encode} while sharing one inventory. The lower perplexity of Sinhala and Tamil (0.73--0.95$\times$) is concentration within it, not missing coverage.
+Table~\ref{tab:fit} shows that the masked metrics respond strongly to corruption---white noise drives InfoNCE to chance and collapses the gap---while Sinhala and Tamil sit on the favourable side of English in both recording conditions. The hypothesis is mechanistic, so we also ask \emph{which} codes each language uses (post-hoc, not pre-registered). Support depends on sample size, so each condition is reduced to the same 30,000 frames, drawn without replacement under the gate above, and averaged over 20 draws; the smallest condition supplies 37,970 gated frames. Sinhala and Tamil occupy 95.8--97.3 of the 320 entries per group against English's 97.5, overlap English's support with Jaccard 0.98--1.00, and place every frame on a code English also uses. Only the frequencies differ: Jensen--Shannon divergence from English is 0.036--0.082, no larger than for English speed-shifted by 1.45$\times$ (0.079), while genuine loss of inventory does register---sine chirps fall to 69.9 codes and 0.427, white noise to 6.7 and 0.645. Languages are thus separable by code frequency~\cite{linke2023encode} while sharing one inventory, and the lower perplexity of Sinhala and Tamil (0.73--0.95$\times$) is concentration within it.
 
 Repeating the analysis on XLSR-53 yields a natural experiment: its pre-training included Tamil but not Sinhala~\cite{conneau2021xlsr}, yet the two behave alike (InfoNCE $0.88\times$ and $0.82\times$ English on YouTube audio, $1.01\times$ and $1.03\times$ on read speech).
 
@@ -174,17 +174,14 @@ Frozen probes bound what a linear head can read off a representation, not what t
 
 Fine-tuning lowers CER against the 3\,h frozen column of Table~\ref{tab:layers} by 53\%, 64\% and 58\% relative for Sinhala, Tamil and English, reaching $0.129\pm0.006$, $0.062\pm0.003$ and $0.093\pm0.003$ over three seeds. Two things follow. At this budget the frozen representation is not what limits any of the three languages, which supports reading the probe results as data- and adaptation-limited. And the ordering is unchanged---Tamil, then English, then Sinhala, both frozen and fine-tuned, the three seed ranges disjoint at 0.058--0.065, 0.090--0.097 and 0.124--0.137---so adaptation neither creates nor removes a low-resource penalty; the residual spread tracks script and corpus, Sinhala carrying the largest character inventory and the shortest clips. None of the nine fine-tuning runs collapsed, in contrast to the linear probes.
 
-\section{Discussion and limitations}
+\section{Discussion and conclusion}
 \label{sec:discussion}
 
-Across three levels of analysis we find no evidence that XLS-R's codebook, its language coverage, or any particular depth disadvantages Sinhala or Tamil. At a 3\,h labelled budget none of the probes has saturated and fine-tuning more than halves their error, so the binding constraint here is labelled data and adaptation rather than the representation; whether the representation becomes limiting at larger budgets is untested. For the motivating application this argues against extending the acoustic codebook.
+Across three levels of analysis we find no evidence that XLS-R's codebook, its language coverage, or any particular depth disadvantages Sinhala or Tamil. At a 3\,h labelled budget none of the probes has saturated and fine-tuning more than halves their error, so the binding constraint here is labelled data and adaptation rather than the representation; whether the representation becomes limiting at larger budgets is untested.
 
 The evidence has clear limits. Apart from the YouTube arm of Sec.~\ref{sec:fit}, all audio is read speech, whereas practical systems face spontaneous recordings. Language and corpus are confounded throughout, and our one attempt to separate them was inconclusive. The equivalence margin is calibrated on unpaired, cross-corpus controls on XLS-R~0.3B and transferred to paired differences on XLSR-53, so it is an anchor rather than a formally matched margin; the XLSR-53 control would give a more lenient 0.327. Samples are small, and CER cannot be compared across scripts. Probe collapse at the \emph{best} layers is unexplained: a sharper optimum in a more rugged loss surface, or trivial convergence at uninformative layers, would each produce it.
 
-\section{Conclusion}
-\label{sec:conclusion}
-
-XLS-R's frozen acoustic codebook does not under-represent Sinhala or Tamil: both are fit at least as well as English, pre-training membership has an equivalence-bounded null effect across 18 languages, the layer-wise profile is shared with English, and fine-tuning at the same budget more than halves the frozen-probe error in every language. Efforts should look beyond codebook extension, and claims of representational deficits should be tested against positive controls and equivalence bounds.
+Nothing here supports the codebook as the bottleneck for these two languages, so efforts should look beyond codebook extension; and claims of representational deficit should be tested against positive controls and equivalence bounds before they are built upon.
 
 % spconf's thebibliography inherits the class's default inter-item spacing, which over
 % 29 entries costs roughly a fifth of a page. Tightening it leaves the 9 pt body size
@@ -192,7 +189,7 @@ XLS-R's frozen acoustic codebook does not under-represent Sinhala or Tamil: both
 \let\oldthebibliography\thebibliography
 \renewcommand{\thebibliography}[1]{%
   \oldthebibliography{#1}%
-  \setlength{\itemsep}{1pt plus 0.3pt}\setlength{\parsep}{0pt}}
+  \setlength{\itemsep}{0pt plus 0.3pt}\setlength{\parsep}{0pt}}
 
 {\ninept
 \bibliographystyle{IEEEbib}
