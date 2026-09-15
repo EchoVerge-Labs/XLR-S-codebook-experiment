@@ -186,6 +186,14 @@ The evidence has clear limits. Apart from the YouTube arm of Sec.~\ref{sec:fit},
 
 XLS-R's frozen acoustic codebook does not under-represent Sinhala or Tamil: both are fit at least as well as English, pre-training membership has an equivalence-bounded null effect across 18 languages, the layer-wise profile is shared with English, and fine-tuning at the same budget more than halves the frozen-probe error in every language. Efforts should look beyond codebook extension, and claims of representational deficits should be tested against positive controls and equivalence bounds.
 
+% spconf's thebibliography inherits the class's default inter-item spacing, which over
+% 29 entries costs roughly a fifth of a page. Tightening it leaves the 9 pt body size
+% (the minimum the call allows) untouched and keeps the references clear of page 6.
+\let\oldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\itemsep}{1pt plus 0.3pt}\setlength{\parsep}{0pt}}
+
 {\ninept
 \bibliographystyle{IEEEbib}
 \bibliography{references}}
