@@ -22,7 +22,7 @@ STY = {"sinhala": dict(c="#b2182b", ls="-",  m="o", lab="Sinhala"),
 # ---------------------------------------------------------------- Fig. 1: Exp B forest
 st = json.load(open(f"{LAB}/Experiment_B_Multilingual/results/final_statistics.json"))
 arms = [("full", "Full clips"), ("crop6", "6.0 s crop"), ("crop9", "9.0 s crop")]
-fig, ax = plt.subplots(figsize=(COLW, 1.55))
+fig, ax = plt.subplots(figsize=(COLW, 1.40))
 ax.axvspan(-0.590, 0.590, color="0.93", zorder=0)
 ax.axvspan(-0.289, 0.289, color="0.82", zorder=0)
 ax.axvline(0, color="k", lw=0.7, zorder=1)
@@ -46,7 +46,7 @@ R = f"{LAB}/Experiment_C_LayerProbe/results"
 pr = json.load(open(f"{R}/probe_results_xlsr300m.json"))
 fl = json.load(open(f"{R}/probe_results_floor.json"))
 L = np.arange(24)
-fig, (a1, a2) = plt.subplots(2, 1, figsize=(COLW, 3.2), sharex=True)
+fig, (a1, a2) = plt.subplots(2, 1, figsize=(COLW, 2.85), sharex=True)
 for lang, s in STY.items():
     m = np.array([pr["layers"][lang][str(l)]["ctc"]["cer_mean"] for l in L])
     sd = np.array([pr["layers"][lang][str(l)]["ctc"]["cer_std"] for l in L])
