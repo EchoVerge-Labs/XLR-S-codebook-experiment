@@ -16,6 +16,14 @@
 
 \title{Is the acoustic codebook the bottleneck? Equivalence-bounded evidence from XLS-R on Sinhala and Tamil}
 
+% ORCID iDs are MANDATORY for every author at ICASSP 2027 and are entered in the
+% submission portal, not in this PDF. A paper with a missing or invalid iD for any
+% author is withdrawn without review. Fill these in before submitting:
+%   Anas Hussaindeen        https://orcid.org/XXXX-XXXX-XXXX-XXXX
+%   Ifadha Imthiyas         https://orcid.org/XXXX-XXXX-XXXX-XXXX
+%   Vihanga Muthumala       https://orcid.org/XXXX-XXXX-XXXX-XXXX
+%   Samadhi Talagala        https://orcid.org/XXXX-XXXX-XXXX-XXXX
+%   Uthayasanker Thayasivam https://orcid.org/XXXX-XXXX-XXXX-XXXX
 \name{Anas Hussaindeen, Ifadha Imthiyas, Vihanga Muthumala, Samadhi Talagala, Uthayasanker Thayasivam}
 \address{Department of Computer Science and Engineering, University of Moratuwa, Sri Lanka \\
 \texttt{\{anas.22, ifadha.22, vihangamuthumala.22,} \\
@@ -25,7 +33,7 @@
 \maketitle
 
 \begin{abstract}
-A common explanation for the weakness of self-supervised speech models on low-resource languages is that the frozen discrete codebook, learned mostly from high-resource speech, lacks units for their sounds. We test this for Sinhala and Tamil with XLS-R in three pre-registered studies. First, we show that the usual quantization residual is undefined for wav2vec~2.0-style quantizers and that its unmasked substitute is insensitive; measured at masked positions, both languages are fit at least as well as English. Second, across 18 FLEURS languages in nine family-matched pairs, the effect of pre-training membership is statistically equivalent to zero within a margin calibrated on perturbations known to degrade the codebook. Third, layer-wise linear probing at an exactly matched 3-hour budget shows the same depth profile for all three languages and no saturation. The one language-specific signal is higher probe instability at the best layers, which we cannot yet attribute to language rather than corpus.
+Self-supervised speech models are widely held to underperform on low-resource languages because their frozen codebook, learned mostly from high-resource speech, lacks units for those sounds. We test this for Sinhala and Tamil with XLS-R in three pre-registered studies. First, the residual usually assumed here is undefined for wav2vec~2.0-style quantizers and its unmasked substitute insensitive; at masked positions, both languages are fit at least as well as English. Second, across 18 FLEURS languages in nine family-matched pairs, the effect of pre-training membership is equivalent to zero within a margin calibrated on codebook-degrading perturbations. Third, layer-wise probing at a matched 3-hour budget gives all three languages the same depth profile, and fine-tuning at that budget removes 53--64\% of the frozen-probe error in every one, placing the limit on labelled data and adaptation rather than the representation. The one language-specific signal, probe instability at the best layers, remains confounded with corpus.
 \end{abstract}
 
 \begin{keywords}
@@ -162,7 +170,7 @@ Probe \emph{stability}, however, does differ. Across nine independent initialisa
 \subsection{Fine-tuning}
 \label{sec:finetune}
 
-Frozen probes bound what a linear head can read off a representation, not what the model achieves once adapted. We therefore fine-tuned the same checkpoint with a CTC head on exactly the same splits, budget, vocabularies and seeds, freezing only the CNN feature encoder (lr $10^{-4}$, batch 8, 30 epochs); the sole change is that the encoder trains. This arm was added after review and is not part of the pre-registered protocol.
+Frozen probes bound what a linear head can read off a representation, not what the model achieves once adapted. We therefore fine-tuned the same checkpoint with a CTC head on exactly the same splits, budget, vocabularies and seeds, freezing only the CNN feature encoder (lr $10^{-4}$, batch 8, 30 epochs); the sole change is that the encoder trains. This arm was added after review and is not part of the pre-registered protocol. Note that fine-tuning bypasses the quantizer entirely: the CTC model instantiates only the convolutional encoder and transformer, and the checkpoint's codevectors and their projections are discarded when it is loaded. This arm therefore does not re-test the codebook. It asks whether the ordering the probes report survives adaptation, and so complements Secs.~\ref{sec:fit} and~\ref{sec:membership} rather than repeating them.
 
 Fine-tuning lowers CER against the 3\,h frozen column of Table~\ref{tab:layers} by 53\%, 64\% and 58\% relative for Sinhala, Tamil and English, reaching $0.129\pm0.006$, $0.062\pm0.003$ and $0.093\pm0.003$ over three seeds. Two things follow. At this budget the frozen representation is not what limits any of the three languages, which supports reading the probe results as data- and adaptation-limited. And the ordering is unchanged---Tamil, then English, then Sinhala, both frozen and fine-tuned---so adaptation neither creates nor removes a low-resource penalty; the residual spread tracks script and corpus, Sinhala carrying the largest character inventory and the shortest clips. None of the nine fine-tuning runs collapsed, in contrast to the linear probes.
 
