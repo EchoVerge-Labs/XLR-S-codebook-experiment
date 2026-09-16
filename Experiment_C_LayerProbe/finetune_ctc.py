@@ -43,8 +43,8 @@ def load_audio(path):
     return ((t - t.mean()) / torch.sqrt(t.var() + 1e-7)).numpy()
 
 
-def prepare(lang, max_hours=None):
-    sp = json.load(open(f"{ROOT}/data/{lang}_split.json", encoding="utf-8"))
+def prepare(lang, max_hours=None, suffix=""):
+    sp = json.load(open(f"{ROOT}/data/{lang}_split{suffix}.json", encoding="utf-8"))
     vocab = sp["vocab"]
     c2i = {c: i for i, c in enumerate(vocab)}
 
@@ -111,9 +111,9 @@ def evaluate(model, te, vocab, bs):
     return err / max(ref, 1)
 
 
-def run(lang, seed, hp, max_hours=None, tag="finetune"):
+def run(lang, seed, hp, max_hours=None, tag="finetune", suffix=""):
     t0 = time.time()
-    vocab, tr, te = prepare(lang, max_hours)
+    vocab, tr, te = prepare(lang, max_hours, suffix)
     print(f"[{lang}] seed {seed}: {len(tr)} train / {len(te)} test utts, "
           f"{sum(r['duration'] for r in tr)/3600:.2f} h, vocab {len(vocab)}", flush=True)
     torch.manual_seed(seed); np.random.seed(seed); rng = random.Random(seed)
@@ -172,6 +172,8 @@ def main():
     ap.add_argument("--epochs", type=int, default=FINETUNE["epochs"])
     ap.add_argument("--max-hours", type=float, default=None)
     ap.add_argument("--tag", default="finetune")
+    ap.add_argument("--split-suffix", default="",
+                    help='e.g. "6h" to read data/<lang>_split6h.json')
     a = ap.parse_args()
 
     hp = dict(FINETUNE); hp["epochs"] = a.epochs
@@ -183,7 +185,7 @@ def main():
             if str(s) in results[lang]:
                 print(f"[{lang}] seed {s}: cached, skipping", flush=True)
                 continue
-            results[lang][str(s)] = run(lang, s, hp, a.max_hours, a.tag)
+            results[lang][str(s)] = run(lang, s, hp, a.max_hours, a.tag, a.split_suffix)
             json.dump(results, open(out_path, "w"), indent=1)
     print(f"\nwrote {out_path}")
 
